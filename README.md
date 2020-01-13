@@ -43,7 +43,7 @@ getToken_()
 In main.gs:
 ```
 main()
-    var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set low limit for testing
+    var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set low limit for test
 
 sendNotifications()
     var supportEmail = "support@LIBRAY.DOMAIN"
