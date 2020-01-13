@@ -5,7 +5,7 @@
 function main() {
   // get authentication token, url and json query and make a POST request to /v5/patrons/query
   var token = getToken_();
-  var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set limit to low number for testing
+  var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set low limit for testing
   var expirationDate = getExpirationDate(30);
   var query = getQuery(expirationDate);
   var patronUrls = apiPost(token, url, query);  // returns an array of urls with patron record numbers
@@ -34,13 +34,15 @@ function main() {
 function sendNotification(patron, library, date) {
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   date = new Date(date).toLocaleDateString("en", options);  // format date for humans
+  var supportEmail = "support@LIBRAY.DOMAIN";
+  var testEmail = "you@LIBRARY.DOMAIN";
 
   try {
     var name = patron.names[0].split(", ")[1].split(" ")[0].toLowerCase();
     name = name.charAt(0).toUpperCase() + name.slice(1);
   }
   catch(error) {
-    GmailApp.sendEmail("support@LIBRAY.DOMAIN", error, patron.names);  // send errors to your helpdesk
+    GmailApp.sendEmail(supportEmail, error, patron.names);  // send errors to your helpdesk
     name = patron.names[0];
   }
 
@@ -51,12 +53,12 @@ function sendNotification(patron, library, date) {
   Logger.log([patron.emails[0], patron.homeLibraryCode, patron.patronType, subject, body]);  // log to console for testing
   try {
       // send email to yourself for testing
-      GmailApp.sendEmail("you@LIBRARY.DOMAIN", subject, body, options);
+      GmailApp.sendEmail(testEmail, subject, body, options);
       // uncomment to send emails to patrons
       //GmailApp.sendEmail(patron.emails[0], subject, body, options);
   }
   catch(error) {
-      GmailApp.sendEmail("suport@LIBRAY.DOMAIN", error, patron.emails[0]); // send errors to your helpdesk
+      GmailApp.sendEmail(supportEmail, error, patron.emails[0]); // send errors to your helpdesk
   }
 }
 

@@ -32,47 +32,49 @@ clasp open
 
 ## Edit Apps Script Code
 
-auth.gs
+In auth.gs:
 ```
 getToken_()
-    key = "YOUR SIERRA API KEY";
-    secret = "YOUR SUPER SECRET API SECRET";
-    getTokenUrl = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/token";
+    var key = "YOUR SIERRA API KEY";
+    var secret = "YOUR SUPER SECRET API SECRET";
+    var getTokenUrl = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/token";
 ```
 
-main.gs
+In main.gs:
 ```
 main()
-    var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3";
+    var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set low limit for testing
 
 sendNotifications()
-    "support@LIBRAY.DOMAIN"
-    "you@LIBRARY.DOMAIN"
+    var supportEmail = "support@LIBRAY.DOMAIN"
+    var testEmail = "you@LIBRARY.DOMAIN"
+    // uncomment to send emails to patrons
+    //GmailApp.sendEmail(patron.emails[0], subject, body, options);
 
 getLocations()
-    "https://LIBRARY.DOMAIN/iii/sierra-api/v5/branches/pickupLocations"
+    var loc = apiGet(token, "https://LIBRARY.DOMAIN/iii/sierra-api/v5/branches/pickupLocations");
 ```
 
-emailBody.gs
+In emailBody.gs:
 ```
 getPlainBody()
-    body = "notification plain text"
+    var body = "notification plain text"
 getHtmlBody()
-    body = "notification with html markup"
+    var body = "notification with html markup"
 ```
 
 ## authorize the script
-```
-Run-> Run function -> main
-Click Allow
-```
+1. Run-> Run function -> main
+2. Click Allow
+
 
 ## add a trigger
 
 1. Edit-> Current project's triggers
-2. + Add Trigger
+2. "+" Add Trigger
 3. Choose which function to run: **main**
 4. Choose which deployment to run: **Head**
 5. Select event source: **Time-driven**
 6. Select type of time based trigger: **Day timer**
 7. Select time of day: **9am to 10am**
+
