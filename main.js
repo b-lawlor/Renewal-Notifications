@@ -5,7 +5,8 @@
 function main() {
   // get authentication token, url and json query and make a POST request to /v5/patrons/query
   var token = getToken_();
-  var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3"; // set low limit for testing
+  // set limit field to a low number for testing
+  var url = "https://LIBRARY.DOMAIN/iii/sierra-api/v5/patrons/query?offset=0&limit=3";
   var expirationDate = getExpirationDate(30);
   var query = getQuery(expirationDate);
   var patronUrls = apiPost(token, url, query);  // returns an array of urls with patron record numbers
