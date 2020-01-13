@@ -18,7 +18,7 @@ https://script.google.com/home/usersettings
 git clone https://github.com/b-lawlor/Renewal-Notifications
 ```
 
-## Create a new Apps Script Project
+## Create a New Apps Script Project
 ```
 cd Renewal-Notifications
 clasp login
@@ -64,12 +64,12 @@ getHtmlBody()
     var body = "notification with html markup"
 ```
 
-## authorize the script
+## Authorize the Script
 1. Run-> Run function -> main
 2. Click Allow
 
 
-## add a trigger
+## Add a Trigger
 
 1. Edit-> Current project's triggers
 2. "+" Add Trigger
