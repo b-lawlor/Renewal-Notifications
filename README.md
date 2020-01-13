@@ -1,28 +1,32 @@
 Google Apps Script project that uses Sierra API to send patrons notification e-mails. Created by Brendan Lawlor for test purposes only. Use at your own risk. Not supported by CLAMS.
 
-#Quickstart
+# Quickstart
 
-##Install Node.js
+## Install Node.js
     https://nodejs.org/en/download/
 
-##Install clasp
+## Install clasp
     npm install @google/clasp -g
 
-##Enable the Google Apps Script API
+## Enable the Google Apps Script API
     https://script.google.com/home/usersettings
 
-##Clone this repo
+## Clone this repo
+```
     git clone https://github.com/b-lawlor/Renewal-Notifications
+```
 
-##Create a new Apps Script Project
+## Create a new Apps Script Project
+```
 cd Renewal-Notifications
 clasp login
 clasp create --title "Renewal Notifications"
 choose standalone
 clasp push
 clasp open
+```
 
-##edit Apps Script files for your library
+## Edit Apps Script files for your library
 
 auth.gs
 ```
@@ -53,13 +57,13 @@ emailBody.gs
         body = "notification with html markup"
 ```
 
-##authorize the script
+## authorize the script
 ```
     Run-> Run function -> main
     Click Allow
 ```
 
-##add a trigger
+## add a trigger
 ```
     Edit-> Current project's triggers
     + Add Trigger
